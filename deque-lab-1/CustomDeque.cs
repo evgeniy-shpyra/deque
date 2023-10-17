@@ -22,7 +22,7 @@ namespace CustomCollection
 
         DoublyNode<T> head; 
         DoublyNode<T> tail; 
-        int count;  // количество элементов в списке
+        int count;
 
         public CustomDeque()
         {
@@ -41,8 +41,61 @@ namespace CustomCollection
                 temp.Previous = node;
             count++;
         }
-      
+        public void AddLast(T data)
+        {
+            DoublyNode<T> node = new DoublyNode<T>(data);
 
+            if (head == null)
+                head = node;
+            else
+            {
+                tail.Next = node;
+                node.Previous = tail;
+            }
+            tail = node;
+            count++;
+        }
+
+        public T RemoveLast()
+        {
+            if (count == 0)
+            {
+                //error
+            }
+
+            T output = tail.Data;
+            if (count == 1)
+            {
+                head = tail = null;
+            }
+            else
+            {
+                tail = tail.Previous;
+                tail.Next = null;
+            }
+            count--;
+            return output;
+        }
+        public T RemoveFirst()
+        {
+            if (count == 0)
+            {
+                // error
+            }
+            T output = head.Data;
+            if (count == 1)
+            {
+                head = tail = null;
+            }
+            else
+            {
+                head = head.Next;
+                head.Previous = null;
+            }
+            count--;
+            return output;
+        }
+       
         public int Count { get { return count; } }
    
 
