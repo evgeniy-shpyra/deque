@@ -17,8 +17,12 @@ namespace CustomCollection
         public DoublyNode<T> Next { get; set; }
     }
 
-    internal class CustomDeque<T>
+    internal class CustomDeque<T> : IEnumerable<T>
     {
+
+        public event Action<T> ElementAdded;
+        public event Action<T> ElementRemoved;
+        public event Action Cleared;
 
         DoublyNode<T> head; 
         DoublyNode<T> tail; 
@@ -40,6 +44,8 @@ namespace CustomCollection
             else
                 temp.Previous = node;
             count++;
+
+            ElementAdded?.Invoke(data);
         }
         public void AddLast(T data)
         {
@@ -54,13 +60,15 @@ namespace CustomCollection
             }
             tail = node;
             count++;
+
+            ElementAdded?.Invoke(data);
         }
 
         public T RemoveLast()
         {
             if (count == 0)
             {
-                //error
+                throw new InvalidOperationException("Неможливо видалити елемент. Дек порожній.");
             }
 
             T output = tail.Data;
@@ -74,13 +82,16 @@ namespace CustomCollection
                 tail.Next = null;
             }
             count--;
+            
+            ElementRemoved?.Invoke(output);
+            
             return output;
         }
         public T RemoveFirst()
         {
             if (count == 0)
             {
-                // error
+                throw new InvalidOperationException("Неможливо видалити елемент. Дек порожній.");
             }
             T output = head.Data;
             if (count == 1)
@@ -93,11 +104,52 @@ namespace CustomCollection
                 head.Previous = null;
             }
             count--;
+            
+            ElementRemoved?.Invoke(output);
+
             return output;
         }
        
         public int Count { get { return count; } }
-   
+
+        public void Clear()
+        {
+            head = null;
+            tail = null;
+            count = 0;
+
+            Cleared?.Invoke();
+        }
+
+        public bool Contains(T data)
+        {
+            DoublyNode<T> current = head;
+            while (current != null)
+            {
+                if (current.Data != null && current.Data.Equals(data))
+                    return true;
+                current = current.Next;
+            }
+            return false;
+        }
+        public bool IsEmpty { get { return count == 0; } }
+
+     
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)this).GetEnumerator();
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            DoublyNode<T> current = head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
 
     }
 
