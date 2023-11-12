@@ -17,7 +17,7 @@ namespace CustomCollection
         public DoublyNode<T> Next { get; set; }
     }
 
-    internal class CustomDeque<T> : IEnumerable<T>
+    public class CustomDeque<T> : IEnumerable<T>
     {
 
         public event Action<T> ElementAdded;
