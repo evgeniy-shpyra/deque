@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCollection", "deque-lab-1\CustomCollection.csproj", "{FB60E4F5-ABE9-4CC7-8CBB-C179455E161C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "MyLib\MyLib.csproj", "{FBB6A25C-2DD0-441B-BFB2-58B172CFFEEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FB60E4F5-ABE9-4CC7-8CBB-C179455E161C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB60E4F5-ABE9-4CC7-8CBB-C179455E161C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB60E4F5-ABE9-4CC7-8CBB-C179455E161C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB6A25C-2DD0-441B-BFB2-58B172CFFEEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB6A25C-2DD0-441B-BFB2-58B172CFFEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB6A25C-2DD0-441B-BFB2-58B172CFFEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB6A25C-2DD0-441B-BFB2-58B172CFFEEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
