@@ -2,7 +2,7 @@
 
 namespace MyLib;
 
-public class DoublyNode<T>
+partial class DoublyNode<T>
 {
     public DoublyNode(T data)
     {
